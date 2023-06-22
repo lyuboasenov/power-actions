@@ -1,5 +1,5 @@
 param(
-  [VMware.VimAutomation.ViCore.Types.V1.Inventory.VIContainer[]] $location,
+  [VMware.VimAutomation.ViCore.Types.V1.Inventory.VMHost] $location,
   [string] $snapshotName
 )
 
@@ -14,7 +14,7 @@ if ([string]::IsNullOrEmpty($snapshotName)) {
   $snapshotName = "vm_snapshot"
 }
 
-$suffix = [DateTime]::Now::ToString("yyyy_MM_dd_HH_mm")
+$suffix = [DateTime]::Now.ToString("yyyy_MM_dd_HH_mm")
 
 
 $snapstatus = $vm | New-Snapshot -name "$($snapshotName)_$($suffix)" -confirm:$false -runasync:$true
